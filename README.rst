@@ -24,7 +24,7 @@ Formal documentation coming soon. Sorry about that. But don't leave now! Here is
 
 ::
 
-	>>> sidewalk-conf.py --add 'example.hello sidewalk_activity_processors.example.hello'
+	$ sidewalk-conf.py --add 'example.hello sidewalk_activity_processors.example.hello'
 
 - The sidwalk-conf.py command-line utility is your way to easily add, list/view, and remove activity processors.
 - Note that when adding your activity processors, you are creating a key association to the activity processor. Also note the syntax: 'example.hello', in this case, 'example' is the group and 'hello' is the name. Groups are useful for executing multiple activity processors in one go. See step 2 below for more information.
@@ -33,12 +33,20 @@ Formal documentation coming soon. Sorry about that. But don't leave now! Here is
 
 ::
 
-	>>> sidewalk-pave.py --activity-processor 'example.hello'
+	$ sidewalk-pave.py --activity-processor 'example.hello'
 
 - Here we are executing our activity processor 'example.hello'.
 - You can execute any number of activity processors in one call.
 - You can also select activity processors by group.
 
+Installation
+------------
+
+To install sidewalk, download the source by clicking the '`Downloads <https://github.com/blakerohde/sidewalk/downloads>`_' link above, and running the following in the un-zipped/un-tarred directory:
+
+::
+
+	$ python setup.py install
 
 Authors
 -------
