@@ -13,14 +13,14 @@ Documentation and Demos
 
 Formal documentation coming soon. Sorry about that. But don't leave now! Here is a quick run-down of how to get started:
 
-Step 0) Create an activity processor.
+0. Create an activity processor.
 
 - This can be any function defined in any module.
 - It is recommended that you create a local package to keep all of your activity processors in one location.
 - Sidewalk comes with a package 'sidewalk_activity_processors' for you to use if you would like.
--- Note that in this sample package, there is an activity processor 'hello' in the module 'example'
+- - Note that in this sample package, there is an activity processor 'hello' in the module 'example'
 
-Step 1) Register your activity processor:
+1. Register your activity processor:
 
 ::
     >>> sidewalk-conf.py --add 'example.hello sidewalk_activity_processors.example.hello'
@@ -28,7 +28,7 @@ Step 1) Register your activity processor:
 - The sidwalk-conf.py command-line utility is your way to easily add, list, and remove activity processors.
 - Note that when adding your activity processors, you are creating a key association to the activity processor. Also note the syntax: 'example.hello', in this case, 'example' is the group and 'hello' is the name. Groups are useful for executing multiple activity processors in one go. See step 2 below for more information.
 
-Step 2) Execute your activity processor:
+2. Execute your activity processor:
 
 ::
     >>> sidewalk-pave.py --activity-processor 'example.hello'
@@ -41,4 +41,4 @@ Step 2) Execute your activity processor:
 Authors
 -------
 
-[Blake Rohde](http://www.blakerohde.com/)
+`Blake Rohde <http://www.blakerohde.com/>`_
