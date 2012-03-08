@@ -10,7 +10,8 @@ setup(
 	author='Blake Rohde',
 	author_email='blake@blakerohde.com',
 	description='The Simple Activity Aggregator.',
-	long_description=open('README.rst').read(),
+	long_description=open('README.rst').read() + '\n\n' +
+                     open('HISTORY.rst').read(),
 	download_url='https://github.com/blakerohde/sidewalk/tarball/master',
 	scripts=[
 		'bin/sidewalk-conf.py',

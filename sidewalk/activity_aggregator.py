@@ -7,11 +7,12 @@ This module is the primary workhorse powering Sidewalk. Let's execute some activ
 :license: ISC, see LICENSE for more details.
 """
 
-import datetime
 import string
 import sys
 
 import sidewalk
+import sidewalk.manager
+import sidewalk.exceptions
 from sidewalk.manager import ActivityProcessorsManager
 
 class ActivityAggregator:
@@ -19,12 +20,13 @@ class ActivityAggregator:
 	activity processors.
 	"""
 	
-	def __init__(self, active_activity_processor_keys=[], active_group_keys=[], verbose=False):
-		self.settings_filename = sidewalk.get_conf('settings.conf')
+	def __init__(self, filename=None, active_activity_processor_keys=[], active_group_keys=[], verbose=False):
+		self.settings_filename = filename
 		self.manager = ActivityProcessorsManager(self.settings_filename)
 		
 		self.verbose = verbose
 		self.active_activity_processor_pairs = self.manager.get_activity_processor_pairs(active_activity_processor_keys)
+		
 		for group_key in active_group_keys:
 			self.active_activity_processor_pairs.update(self.manager.get_group_activity_processor_pairs(group_key))
 	
@@ -42,20 +44,21 @@ class ActivityAggregator:
 		if len(self.active_activity_processor_pairs) == 0:
 			self.active_activity_processor_pairs = self.manager.get_activity_processor_pairs()
 		
-		for (key, activity_processor) in self.active_activity_processor_pairs.items():
+		for (key, activity_processor) in self.active_activity_processor_pairs.items():	
 			i = activity_processor.rfind('.')
 			module, attr = activity_processor[:i], activity_processor[i+1:]
 			
 			try:
 				mod = self.import_module(module)
-			except ImportError, e:
-				print 'ERROR: Cannot import activity processor module %s: "%s"' % (module, e)
-				raise
+			except ImportError:
+				raise sidewalk.exceptions.SidewalkModuleImportError(module=module)
 			
 			try:
 				func = getattr(mod, attr)
 			except AttributeError:
-				print 'ERROR: Module "%s" does not define a "%s" callable activity processor' % (module, attr)
-				raise
+				raise sidewalk.exceptions.SidewalkMethodDoesNotExist(module=module, method=attr)
 			
-			func()
+			try:
+				func()
+			except:
+				raise sidewalk.exceptions.SidewalkRogueActivityProcessor(activity_processor=activity_processor)

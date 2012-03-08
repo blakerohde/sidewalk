@@ -1,11 +1,11 @@
 Sidewalk: Simple Activity Aggregator
 ====================================
 
-Sidewalk allows you to run your Python code from the command-line.
+Sidewalk allows you to trigger the execution of Python methods from the command-line.
 
-This comes in handy when you want to setup cron jobs to execute Python code.
+Simply register your activity processor (any defined method in any module) and you can execute it using the included command-line utilities: ``sidewalk-conf.py`` and ``sidewalk-pave.py``, respectively.
 
-Simply register your activity processor (any defined method in any module) and you can execute it using the included command-line utilities: 'sidewalk-conf.py' and 'sidewalk-pave.py', respectively.
+This comes in handy when you want to setup cron jobs to execute Python code. You can easily create multiple cron job entries that run at various times and call different activity processors.
 
 
 Documentation and Demos
@@ -17,8 +17,8 @@ Formal documentation coming soon. Sorry about that. But don't leave now! Here is
 
 - This can be any function defined in any module.
 - It is recommended that you create a local package to keep all of your activity processors in one location.
-- Sidewalk comes with a package 'sidewalk_activity_processors' for you to use if you would like.
-- Note that in this sample package, 'sidewalk_activitiy_processors', there is an activity processor 'hello' in the module 'example'.
+- Sidewalk comes with a package ``sidewalk_activity_processors`` for you to use if you would like.
+- Note that in this sample package, ``sidewalk_activitiy_processors``, there is an activity processor 'hello' in the module 'example'.
 
 **Step 1) Register your activity processor:**
 
@@ -39,14 +39,16 @@ Formal documentation coming soon. Sorry about that. But don't leave now! Here is
 - You can execute any number of activity processors in one call.
 - You can also select activity processors by group.
 
+
 Installation
 ------------
 
-To install sidewalk, download the source by clicking the '`Downloads <https://github.com/blakerohde/sidewalk/downloads>`_' link above, and running the following in the un-zipped/un-tarred directory:
+To install Sidewalk, download the source by clicking the '`Downloads <https://github.com/blakerohde/sidewalk/downloads>`_' link above, and running the following in the un-zipped/un-tarred directory:
 
 ::
 
 	$ python setup.py install
+
 
 Authors
 -------

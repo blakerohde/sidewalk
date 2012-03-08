@@ -7,10 +7,11 @@ This module contains manager(s) for managing Sidewalk resources (setting files, 
 :license: ISC, see LICENSE for more details.
 """
 
-import sys
-import datetime
+import os
 import string
 import ConfigParser
+
+import sidewalk.exceptions
 
 class ActivityProcessorsManager:
 	"""The :class:`ActivityProcessorsManager` object. It allows for the management and storage of
@@ -29,19 +30,27 @@ class ActivityProcessorsManager:
 		"""Open the specified configuration file."""
 		
 		self.__filename = filename
-		self.__config.readfp(open(self.__filename, 'r'))
+		
+		try:
+			self.__config.readfp(open(self.__filename, 'r'))
+		except IOError:
+			raise sidewalk.exceptions.SidewalkSettingsFileIOError(filename=self.__filename, permission='r')
+		
 		self.__activity_processor_pairs = dict(self.__config.items('activity_processors'))
 	
 	def save(self):
 		"""Save the changes made."""
 		
-		self.__config.write(open(self.__filename, 'w'))
-	
+		try:
+			self.__config.write(open(self.__filename, 'w'))
+		except IOError:
+			raise sidewalk.exceptions.SidewalkSettingsFileIOError(filename=self.__filename, permission='w')
+		
 	def add(self, key, activity_processor):
 		"""Add a new activity processor."""
 		
 		self.__activity_processor_pairs[key] = activity_processor
-
+		
 		for activity_processor_key in self.__activity_processor_pairs.keys():
 			self.__config.set('activity_processors', activity_processor_key, self.__activity_processor_pairs[activity_processor_key])
 	
@@ -61,7 +70,10 @@ class ActivityProcessorsManager:
 	def get_activity_processor(self, key):
 		"""Get the specified activity processor by its key."""
 		
-		return self.__activity_processor_pairs[key]
+		try:
+			return self.__activity_processor_pairs[key]
+		except KeyError:
+			raise sidewalk.exceptions.SidewalkKeyDoesNotExist(key)
 	
 	def get_activity_processor_pairs(self, key_list=None):
 		"""Get the specified activity processor pairs. Pairs are returned as a dictionary
@@ -76,8 +88,8 @@ class ActivityProcessorsManager:
 		else:
 			pairs = {}
 			for key in key_list:
-				pairs[key] = self.get_activity_processor(key)
-			
+				pairs[key] = self.get_activity_processor(key=key)
+					
 			return pairs
 	
 	def get_group_activity_processor_pairs(self, group_key):
@@ -88,4 +100,13 @@ class ActivityProcessorsManager:
 			if activity_processor_key.find(group_key) == 0:
 				pairs[activity_processor_key] = self.get_activity_processor(activity_processor_key)
 		
+		if len(pairs) == 0:
+			raise sidewalk.exceptions.SidewalkGroupDoesNotExist(group_key=group_key)
+			
 		return pairs
+
+__root_dir = os.path.abspath(os.path.dirname(__file__))
+def get_conf(path):
+	"""Get the path of the requested configuration file."""
+	
+	return os.path.join(__root_dir, 'conf', path)

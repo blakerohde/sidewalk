@@ -5,16 +5,26 @@ sidewalk
 :license: ISC, see LICENSE for more details.
 """
 
-import os
+import time
 
 __title__ = 'sidewalk'
-__version__ = '0.0.1'
+__version__ = '0.1.0'
 __author__ = 'Blake Rohde'
 __license__ = 'ISC'
 __copyright__ = 'Copyright 2012 Blake Rohde'
 
-__root_dir = os.path.abspath(os.path.dirname(__file__))
-def get_conf(path):
-	"""Get the path of the requested configuration file."""
+def log(message, tag='GENERAL', verbose=False):
+	"""Simple log/message function for the output of timestamped messages."""
+	print '%s\t%s\t%s' % (
+		time.strftime('%Y-%m-%d %H:%M:%S', time.localtime()),
+		tag,
+		message
+	)
 	
-	return os.path.join(__root_dir, 'conf', path)
+def error_log(message):
+	"""Error log wrapper for log."""
+	log(message, tag='ERROR', verbose=True)
+	
+def debug_log(message):
+	"""Debug log wrapper for log."""
+	log(message, tag='DEBUG', verbose=True)
