@@ -1,7 +1,14 @@
 History
 -------
 
-0.1.0 (2012-03-07)
+0.1.1 (2012-03-08)
+++++++++++++++++++
+
+- Moved log functions into new module ``sidewalk.loggers``
+- Added exception for when custom settings file's don't have the required section(s)
+- ``sidewalk-conf.py --list`` now returns a sorted list
+
+0.1.0 (2012-03-08)
 ++++++++++++++++++
 
 - Updated README to better represent what it is that Sidewalk actually does

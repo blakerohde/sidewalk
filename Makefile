@@ -11,8 +11,6 @@ PYTHON ?= python
 ###
  # all
  #
- # git-cleanup
- #
  # dev-cleanup
  # dev-reinstall
  # dev-install

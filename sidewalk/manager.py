@@ -36,7 +36,10 @@ class ActivityProcessorsManager:
 		except IOError:
 			raise sidewalk.exceptions.SidewalkSettingsFileIOError(filename=self.__filename, permission='r')
 		
-		self.__activity_processor_pairs = dict(self.__config.items('activity_processors'))
+		try:
+			self.__activity_processor_pairs = dict(self.__config.items('activity_processors'))
+		except ConfigParser.NoSectionError:
+			raise sidewalk.exceptions.SidewalkSectionNotDefined(filename=self.__filename, section='activity_processors')
 	
 	def save(self):
 		"""Save the changes made."""
@@ -73,7 +76,7 @@ class ActivityProcessorsManager:
 		try:
 			return self.__activity_processor_pairs[key]
 		except KeyError:
-			raise sidewalk.exceptions.SidewalkKeyDoesNotExist(key)
+			raise sidewalk.exceptions.SidewalkKeyDoesNotExist(key=key)
 	
 	def get_activity_processor_pairs(self, key_list=None):
 		"""Get the specified activity processor pairs. Pairs are returned as a dictionary

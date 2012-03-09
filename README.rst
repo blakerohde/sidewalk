@@ -8,8 +8,8 @@ Simply register your activity processor (any defined method in any module) and y
 This comes in handy when you want to setup cron jobs to execute Python code. You can easily create multiple cron job entries that run at various times and call different activity processors.
 
 
-Documentation and Demos
------------------------
+Documentation and Getting Started
+---------------------------------
 
 Formal documentation coming soon. Sorry about that. But don't leave now! Here is a quick run-down of how to get started:
 

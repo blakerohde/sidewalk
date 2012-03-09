@@ -22,7 +22,7 @@ class ActivityAggregator:
 	
 	def __init__(self, filename=None, active_activity_processor_keys=[], active_group_keys=[], verbose=False):
 		self.settings_filename = filename
-		self.manager = ActivityProcessorsManager(self.settings_filename)
+		self.manager = ActivityProcessorsManager(filename=self.settings_filename)
 		
 		self.verbose = verbose
 		self.active_activity_processor_pairs = self.manager.get_activity_processor_pairs(active_activity_processor_keys)

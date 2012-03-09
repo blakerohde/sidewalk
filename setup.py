@@ -1,6 +1,6 @@
 import os
-
 from distutils.core import setup
+
 import sidewalk
 
 setup(
@@ -30,8 +30,10 @@ setup(
 	},
 	license='ISC',
 	classifiers=(
-		'Development Status :: 2 - Pre-Alpha',
+		'Development Status :: 4 - Beta',
 		'Environment :: Console',
+		'Topic :: System :: Logging',
+		'Topic :: System :: Monitoring',
 		'Intended Audience :: Developers',
 		'License :: OSI Approved :: ISC License (ISCL)',
 		'Natural Language :: English',

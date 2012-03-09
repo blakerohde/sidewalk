@@ -2,7 +2,7 @@
 
 import optparse
 
-import sidewalk
+import sidewalk.loggers
 import sidewalk.manager
 from sidewalk.manager import ActivityProcessorsManager
 
@@ -68,12 +68,17 @@ def main():
 		
 		# List defined activity_processors, if requestd
 		if options.list:
-			for activity_processor_key in manager.get_activity_processor_pairs().keys():
+			for activity_processor_key in sorted(manager.get_activity_processor_pairs().keys()):
 				print '%s : %s' % (activity_processor_key, manager.get_activity_processor(activity_processor_key))
 	except sidewalk.exceptions.SidewalkSettingsFileIOError, e:
-		sidewalk.error_log('Could not open settings file "%s" with permission "%s"' % (
+		sidewalk.loggers.error('Could not open settings file "%s" with permission "%s"' % (
 			e.filename,
 			e.permission
+		))
+	except sidewalk.exceptions.SidewalkSectionNotDefined, e:
+		sidewalk.loggers.error('Settings file "%s" does not have the required section "%s"' % (
+			e.filename,
+			e.section
 		))
 		
 if __name__ == '__main__':

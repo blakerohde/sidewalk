@@ -19,7 +19,20 @@ class SidewalkSettingsFileIOError(Exception):
 			self.filename,
 			self.permission
 		))
-		
+
+class SidewalkSectionNotDefined(Exception):
+	"""The specified settings file does not contain a required section."""
+	
+	def __init__(self, filename, section):
+		self.filename = filename
+		self.section = section
+	
+	def __str__(self):
+		return repr('%s %s' % (
+			self.filename,
+			self.section
+		))
+
 class SidewalkKeyDoesNotExist(Exception):
 	"""Activity processor requested is not defined."""
 	
