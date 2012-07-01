@@ -24,13 +24,10 @@ setup(
 		'' : [
 			'LICENSE'
 		],
-		'sidewalk' : [
-			'conf/*.conf'
-		],
 	},
 	license='ISC',
 	classifiers=(
-		'Development Status :: 4 - Beta',
+		'Development Status :: 5 - Production/Stable',
 		'Environment :: Console',
 		'Topic :: System :: Logging',
 		'Topic :: System :: Monitoring',

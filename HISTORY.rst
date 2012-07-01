@@ -1,6 +1,14 @@
 History
 -------
 
+0.2.0 (2012-06-30)
+++++++++++++++++++
+
+- New Makefile for easier development testing
+- Sidewalk is production-ready; bumped version to 0.2.0
+- Documentation is now available under ``docs/``
+- Specifying a 'custom' settings file is now required; see the documentation for more information on this
+
 0.1.1 (2012-03-08)
 ++++++++++++++++++
 
@@ -15,7 +23,6 @@ History
 - Added basic log functions and made error messages prettier
 - Created ``sidewalk.exceptions`` module and associated exceptions
 - Unhandled exceptions thrown by rogue activity processors are now caught
-- ``sidewalk-conf.py --list`` now returns a sorted list
 - ``sidewalk-conf.py`` no longer rewrites configuration file if only ``--list`` is requested
 - Can now specify filename in ``sidewalk-conf.py`` and ``sidewalk-pave.py`` to use custom Sidewalk settings file/location
 

@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-import optparse
+import argparse
 import traceback
 
 import sidewalk.loggers
@@ -9,41 +9,22 @@ import sidewalk.exceptions
 from sidewalk.activity_aggregator import ActivityAggregator
 
 def main():
-	parser = optparse.OptionParser()
-	parser.add_option(
-			'-a', '--activity-processor', action='append', default=[],
-			dest='activity_processor_keys',
-			help='select the activity processor(s) to run by key (format: \'[group.]name\')',
-			type='string')
-	parser.add_option(
-			'-g', '--group', action='append', default=[], 
-			dest='group_keys',
-			help='select the activity processor group(s) to run by key (format: \'group\')',
-			type='string')
-	parser.add_option(
-			'-f', '--settings-file', action='store', default=None,
-			dest='filename',
-			help='settings file used to store Sidewalk settings and configuration',
-			type='string')
-	parser.add_option(
-			'-v', '--verbose', action='store_true', default=False, 
-			dest='verbose',
+	parser = argparse.ArgumentParser()
+	
+	parser.add_argument('filename', default='',
+			help='settings file used to store Sidewalk settings and configuration')
+	parser.add_argument('-a', '--activity-processor', dest='activity_processor_keys', action='append', default=[],
+			help='select the activity processor(s) to run by key (format: \'[group.]name\')')
+	parser.add_argument('-g', '--group', dest='group_keys', action='append', default=[],
+			help='select the activity processor group(s) to run by key (format: \'group\')')
+	parser.add_argument('-v', '--verbose', action='store_true', default=False,
 			help='enable debug messages')
 	
-	(options, args) = parser.parse_args()
+	args = parser.parse_args()
 	
 	try:
-		filename = ''
-		if options.filename == None:
-			filename = sidewalk.manager.get_conf('settings.conf')
-		else:
-			filename = options.filename
-		
-		aggregator = ActivityAggregator(
-						filename=filename,
-						active_activity_processor_keys=options.activity_processor_keys,
-						active_group_keys=options.group_keys,
-						verbose=options.verbose)
+		aggregator = ActivityAggregator(filename=args.filename, active_activity_processor_keys=args.activity_processor_keys,
+						active_group_keys=args.group_keys, verbose=args.verbose)
 		
 		aggregator.run()
 	except sidewalk.exceptions.SidewalkSettingsFileIOError, e:
@@ -64,7 +45,8 @@ def main():
 			e.group_key
 		))
 	except sidewalk.exceptions.SidewalkModuleImportError, e:
-		sidewalk.loggers.error('Cannot import module "%s"' % (
+		sidewalk.loggers.error('Cannot import module "%s" OR a module used/called WITHIN module "%s"' % (
+			e.module,
 			e.module
 		))
 	except sidewalk.exceptions.SidewalkMethodDoesNotExist, e:
