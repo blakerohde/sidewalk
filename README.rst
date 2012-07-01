@@ -11,7 +11,7 @@ This comes in handy when you want to setup cron jobs to execute Python code. You
 Documentation and Getting Started
 ---------------------------------
 
-Formal documentation is available on `Read the Docs <http://readthedocs.org/projects/sidewalk/>`_ and is also located in the ``docs/`` directory of the source code.
+Formal documentation is available on `Read the Docs <http://sidewalk.readthedocs.org/en/latest/>`_ and is also located in the ``docs/`` directory of the source code.
 
 Here is a quick run-down for how to get started:
 
