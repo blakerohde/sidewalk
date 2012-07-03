@@ -37,7 +37,7 @@ Before we can register our activity processors, we need to create and initialize
 	$ sidewalk-conf.py ./sidewalk.conf --add 'example.hello sidewalk_activity_processors.example.hello'
 
 - The sidwalk-conf.py command-line utility is your way to easily add, list/view, and remove activity processors.
-- Note that when adding your activity processors, you are creating a key association to the activity processor. Also note the syntax: 'example.hello', in this case, 'example' is the group and 'hello' is the name. Groups are useful for executing multiple activity processors in one go. See step 2 below for more information.
+- Note that when adding your activity processors, you are creating a key association to the activity processor. Also note the syntax: 'example.hello', in this case, 'example' is the group and 'hello' is the name. Groups are useful for executing multiple activity processors in one go. See step 3 below for more information.
 
 **Step 3) Execute your activity processor:**
 

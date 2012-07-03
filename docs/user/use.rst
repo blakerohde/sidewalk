@@ -5,7 +5,7 @@ How to use Sidewalk
 
 This section of the documentation provides commentary for how to use Sidewalk.
 
-This page of documentation will be expanded in the furture. In the mean time, here is a quick run-down for how to get started:
+This page of documentation will be expanded in the future. In the mean time, here is a quick run-down for how to get started:
 
 Create Activity Processors
 --------------------------

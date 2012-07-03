@@ -34,6 +34,7 @@ clean:
 	@echo -e "\nclean:"
 	rm -rf ./MANIFEST
 	rm -rf ./dist
+	rm -rf ./build
 	rm -rf ./sidewalk.conf
 	rm -rf ./sidewalk_activity_processors/*.pyc
 	rm -rf ./sidewalk/*.pyc

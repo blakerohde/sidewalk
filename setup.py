@@ -25,7 +25,7 @@ setup(
 			'LICENSE'
 		],
 	},
-	license='ISC',
+	license=open('LICENSE').read(),
 	classifiers=(
 		'Development Status :: 5 - Production/Stable',
 		'Environment :: Console',
