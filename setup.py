@@ -14,8 +14,7 @@ setup(
                      open('HISTORY.rst').read(),
 	download_url='https://github.com/blakerohde/sidewalk/tarball/master',
 	scripts=[
-		'bin/sidewalk-conf.py',
-		'bin/sidewalk-pave.py',
+		'sidewalk/bin/sidewalk.py',
 	],
 	packages=[
 		'sidewalk',

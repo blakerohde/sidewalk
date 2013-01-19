@@ -36,8 +36,7 @@ clean:
 	rm -rf ./dist
 	rm -rf ./build
 	rm -rf ./sidewalk.conf
-	rm -rf ./sidewalk_activity_processors/*.pyc
-	rm -rf ./sidewalk/*.pyc
+	rm -rf `find . -type f -name *.pyc`
 	
 uninstall:
 	@echo -e "\nuninstall:"
