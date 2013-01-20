@@ -13,7 +13,7 @@ export VIRTUAL_ENV
 BIN ?= ./sidewalk/bin/
 PYTHON ?= python
 
-all: clean gen-docs uninstall install test
+all: clean gen-docs install test
 	@echo -e "\nDONE"
 
 pypi-upload:

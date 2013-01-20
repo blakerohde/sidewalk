@@ -110,7 +110,7 @@ def main(argv):
                     for group_key in group_keys:
                         manager.remove_group(group_key)
                 except exceptions.SidewalkGroupDoesNotExist, e:
-                    loggers.debug('Invalid group key "%s".' % (
+                    loggers._debug('Invalid group key "%s".' % (
                         e.group_key,
                     ))
                 
@@ -122,35 +122,35 @@ def main(argv):
                 for activity_processor_key in sorted(manager.get_activity_processor_pairs().keys()):
                     print '%s : %s' % (activity_processor_key, manager.get_activity_processor(activity_processor_key))
     except exceptions.SidewalkSettingsFileIOError, e:
-        loggers.error('Could not open settings file "%s" with "%s" permissions. Try running ``init`` command.' % (
+        loggers._error('Could not open settings file "%s" with "%s" permissions. Try running ``init`` command.' % (
             e.filename,
             e.permission,
         ))
         sys.exit(1)
     except exceptions.SidewalkSectionNotDefined, e:
-        loggers.error('Settings file "%s" does not have the required section "%s". Try running ``init`` command.' % (
+        loggers._error('Settings file "%s" does not have the required section "%s". Try running ``init`` command.' % (
             e.filename,
             e.section,
         ))
         sys.exit(1)
     except exceptions.SidewalkKeyDoesNotExist, e:
-        loggers.error('Invalid key "%s".' % (
+        loggers._error('Invalid key "%s".' % (
             e.key,
         ))
         sys.exit(1)
     except exceptions.SidewalkGroupDoesNotExist, e:
-        loggers.error('Invalid group key "%s".' % (
+        loggers._error('Invalid group key "%s".' % (
             e.group_key,
         ))
         sys.exit(1)
     except exceptions.SidewalkMethodDoesNotExist, e:
-        loggers.error('Activity processor "%s" in module "%s" could not be executed. This is most likely caused by a compile-time exception. Try running again with the ``--verbose`` flag.' % (
+        loggers._error('Activity processor "%s" in module "%s" could not be executed. This is most likely caused by a compile-time exception. Try running again with the ``--verbose`` flag.' % (
             e.method,
             e.module,
         ))
         sys.exit(1)
     except:
-        loggers.error('Unexpected exception: \n%s\nThis is most likely caused by a runtime exception. Try running again with the ``--verbose`` flag.' % (
+        loggers._error('Unexpected exception: \n%s\nThis is most likely caused by a runtime exception. Try running again with the ``--verbose`` flag.' % (
             traceback.format_exc(),
         ))
         sys.exit(1)

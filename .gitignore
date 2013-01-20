@@ -3,3 +3,4 @@
 *.py[co]
 *.swp
 docs/_build/
+dist/
