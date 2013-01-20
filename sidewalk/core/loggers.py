@@ -38,7 +38,7 @@ def _error(message, verbose=True):
     return error(message, verbose=verbose)
 
 
-def debug(message, verbose=True):
+def debug(message, verbose=False):
     """Debug log wrapper for log."""
     
     log(message, tag='DEBUG', verbose=verbose)
