@@ -3,7 +3,7 @@ sidewalk.manager
 
 This module contains manager(s) for managing Sidewalk resources (setting files, etc.).
 
-:copyright: (c) 2012 by Blake Rohde.
+:copyright: (c) 2013 by Blake Rohde.
 :license: ISC, see LICENSE for more details.
 """
 
@@ -12,6 +12,7 @@ import string
 import ConfigParser
 
 from sidewalk.core import exceptions
+
 
 class ActivityProcessorsManager:
     """The :class:`ActivityProcessorsManager` object. It allows for the management and storage of
@@ -26,6 +27,7 @@ class ActivityProcessorsManager:
         if self.__filename != None:
             self.open(self.__filename)
     
+
     def open(self, filename):
         """Open the specified configuration file."""
         
@@ -41,6 +43,7 @@ class ActivityProcessorsManager:
         except ConfigParser.NoSectionError:
             raise exceptions.SidewalkSectionNotDefined(filename=self.__filename, section='activity_processors')
     
+
     def save(self):
         """Save the changes made."""
         
@@ -48,7 +51,8 @@ class ActivityProcessorsManager:
             self.__config.write(open(self.__filename, 'w'))
         except IOError:
             raise exceptions.SidewalkSettingsFileIOError(filename=self.__filename, permission='w')
-        
+    
+
     def add(self, key, activity_processor):
         """Add a new activity processor."""
         
@@ -57,6 +61,7 @@ class ActivityProcessorsManager:
         for activity_processor_key in self.__activity_processor_pairs.keys():
             self.__config.set('activity_processors', activity_processor_key, self.__activity_processor_pairs[activity_processor_key])
     
+
     def remove(self, key):
         """Remove the specified activity processor by its key."""
         
@@ -65,6 +70,7 @@ class ActivityProcessorsManager:
             self.__config.remove_option('activity_processors', key)
         except KeyError:
             raise exceptions.SidewalkKeyDoesNotExist(key=key)
+
 
     def remove_group(self, group_key):
         """Remove the specified activity processors by their group key."""
@@ -78,6 +84,7 @@ class ActivityProcessorsManager:
         if not success:
             raise exceptions.SidewalkGroupDoesNotExist(group_key=group_key)
 
+
     def get_activity_processor(self, key):
         """Get the specified activity processor by its key."""
         
@@ -85,7 +92,8 @@ class ActivityProcessorsManager:
             return self.__activity_processor_pairs[key]
         except KeyError:
             raise exceptions.SidewalkKeyDoesNotExist(key=key)
-    
+ 
+
     def get_activity_processor_pairs(self, key_list=None):
         """Get the specified activity processor pairs. Pairs are returned as a dictionary
         where the key of the dict is the activity processor's key and the dict's associated
@@ -102,7 +110,8 @@ class ActivityProcessorsManager:
                 pairs[key] = self.get_activity_processor(key=key)
                     
             return pairs
-    
+  
+
     def get_group_activity_processor_pairs(self, group_key):
         """Get the specified activity processor pairs with the specified group key."""
         
@@ -115,6 +124,7 @@ class ActivityProcessorsManager:
             raise exceptions.SidewalkGroupDoesNotExist(group_key=group_key)
             
         return pairs
+
 
 __root_dir = os.path.abspath(os.path.dirname(__file__))
 def get_conf(path):

@@ -1,18 +1,10 @@
-sidewalk Package
-================
-
-:mod:`sidewalk` Package
------------------------
-
-.. automodule:: sidewalk.__init__
-    :members:
-    :undoc-members:
-    :show-inheritance:
+core Package
+============
 
 :mod:`activity_aggregator` Module
 ---------------------------------
 
-.. automodule:: sidewalk.activity_aggregator
+.. automodule:: sidewalk.core.activity_aggregator
     :members:
     :undoc-members:
     :show-inheritance:
@@ -20,7 +12,7 @@ sidewalk Package
 :mod:`exceptions` Module
 ------------------------
 
-.. automodule:: sidewalk.exceptions
+.. automodule:: sidewalk.core.exceptions
     :members:
     :undoc-members:
     :show-inheritance:
@@ -28,7 +20,7 @@ sidewalk Package
 :mod:`loggers` Module
 ---------------------
 
-.. automodule:: sidewalk.loggers
+.. automodule:: sidewalk.core.loggers
     :members:
     :undoc-members:
     :show-inheritance:
@@ -36,7 +28,7 @@ sidewalk Package
 :mod:`manager` Module
 ---------------------
 
-.. automodule:: sidewalk.manager
+.. automodule:: sidewalk.core.manager
     :members:
     :undoc-members:
     :show-inheritance:

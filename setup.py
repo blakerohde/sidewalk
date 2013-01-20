@@ -3,6 +3,7 @@ from distutils.core import setup
 
 import sidewalk
 
+
 setup(
 	name='sidewalk',
 	version=sidewalk.__version__,
@@ -14,14 +15,18 @@ setup(
                      open('HISTORY.rst').read(),
 	download_url='https://github.com/blakerohde/sidewalk/tarball/master',
 	scripts=[
-		'sidewalk/bin/sidewalk.py',
+		'sidewalk/bin/sidewalk',
 	],
 	packages=[
 		'sidewalk',
+        'sidewalk.bin',
+        'sidewalk.conf',
+        'sidewalk.core',
+        'sidewalk.test',
 	],
 	package_data={
 		'' : [
-			'LICENSE'
+            'LICENSE',
 		],
 	},
 	license=open('LICENSE').read(),

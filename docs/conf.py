@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 #
 # sidewalk documentation build configuration file, created by
-# sphinx-quickstart on Sun May  6 11:13:19 2012.
+# sphinx-quickstart on Sun May  6 11:13:19 2013.
 #
 # This file is execfile()d with the current directory set to its containing dir.
 #
@@ -44,7 +44,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'Sidewalk'
-copyright = u'2012, A project by Blake Rohde'
+copyright = u'2013, A project by Blake Rohde'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the

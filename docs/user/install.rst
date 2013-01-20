@@ -35,14 +35,9 @@ To install without pip or PyPi, download the `source tarball <https://github.com
 Run
 ---
 
-Now that Sidewalk is installed on your system, you can verify both ``sidewalk-conf.py`` and ``sidewalk-pave.py`` are correctly installed by executing the following:
+Now that Sidewalk is installed on your system, you can verify the command-line utility is installed by executing the following:
 
 ::
 
-        $ sidewalk-conf.py --help
-
-::
-
-        $ sidewalk-pave.py --help
-
+        $ sidewalk --help
 

@@ -4,8 +4,10 @@ History
 0.3.0 (2013-01-19)
 ++++++++++++++++++
 
-- New and improved command line interface. Legacy CLI is not supported. Sorry. See the documentation or ``sidwalk-conf.py --help`` and ``sidewalk-pave.py --help`` for more information. The CLI should not change in the future. 
-- Greatly improved error handling and logging, added ``traceback`` output for unhandled exceptions, i.e. exceptions caused by activity processors or bad refences to activity processors.
+- New and improved command-line interface. Legacy CLI is not supported. Sorry. See the documentation or execute ``sidewalk --help`` for more information. The CLI should not change in the future. 
+- Greatly improved error handling and logging; added ``traceback`` output for unhandled exceptions, i.e. exceptions caused by activity processors or bad refences to activity processors.
+- Moved locations of ``bin/`` and the core libs into ``sidewalk/bin`` and ``sidewalk/core``, respectively.
+- Updated documentation and README.
 
 0.2.0 (2012-06-30)
 ++++++++++++++++++

@@ -12,12 +12,12 @@ As the saying goes, there are many ways to skin a cat. Obviously people have bee
 
 When you register an activity processor, you assign it a key. You can create group associations when assigning keys (e.g. 'group.sub-group.activity_processor'). You can then execute all of the registered activity processors in one call by referencing the assigned 'group' or 'group.sub-group'. This is a nice feature as it allows you to execute many activity processors, that are potentially located in any number of modules, in one call.
 
-You can also execute any number of groups, and/or any number of specific activity processors, when calling ``sidewalk-pave.py``. This is a key feature of Sidewalk, as you can easily create multiple cron job entries that run at various times, but call different activity processors. If you wanted to implement similar functionality in a traditional sense, you would have to create multiple modules that reference said activity processors, or create one module and have an if-else statement to do the same.
+You can also execute any number of groups, and/or any number of specific activity processors, when calling the command-line utility ``sidewalk``. This is a key feature of Sidewalk, as you can easily create multiple cron job entries that run at various times, but call different activity processors. If you wanted to implement similar functionality in a traditional sense, you would have to create multiple modules that reference said activity processors, or create one module and have an if-else statement to do the same.
 
 Sidewalk's License
 ------------------
 
-    Copyright (c) 2012, Blake Rohde
+    Copyright (c) 2013, Blake Rohde
 
     Permission to use, copy, modify, and/or distribute this software for any purpose with or without fee is hereby granted, provided that the above copyright notice and this permission notice appear in all copies.
 

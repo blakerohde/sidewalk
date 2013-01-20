@@ -1,0 +1,5 @@
+*.egg-info
+*.pot
+*.py[co]
+*.swp
+docs/_build/
