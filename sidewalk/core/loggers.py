@@ -26,28 +26,16 @@ def log(message, tag='GENERAL', verbose=False):
 def error(message, verbose=True):
     """Error log wrapper for log."""
     
-    return log(message, tag='ERROR', verbose=verbose)
-
-
-def _error(message, verbose=True):
-    """Error log wrapper for log. This function respects global_settings.VERBOSE."""
-    
     if verbose is None:
         verbose = global_settings.VERBOSE
     
-    return error(message, verbose=verbose)
+    return log(message, tag='ERROR', verbose=verbose)
 
 
 def debug(message, verbose=False):
     """Debug log wrapper for log."""
     
-    log(message, tag='DEBUG', verbose=verbose)
-
-
-def _debug(message, verbose=None):
-    """Debug log wrapper for log. This function defaultly respects global_settings.VERBOSE."""
-    
     if verbose is None:
         verbose = global_settings.VERBOSE
     
-    return debug(message, verbose=verbose)
+    log(message, tag='DEBUG', verbose=verbose)
