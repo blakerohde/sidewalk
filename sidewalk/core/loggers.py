@@ -12,9 +12,12 @@ import time
 from sidewalk.conf import global_settings
 
 
-def log(message, tag='GENERAL', verbose=False):
+def log(message, tag='GENERAL', verbose=None):
     """Simple log/message function for the output of timestamped messages."""
     
+    if verbose is None:
+        verbose = global_settings.VERBOSE
+
     if verbose:
         print '%s\t%s\t%s' % (
             time.strftime('%Y-%m-%d %H:%M:%S', time.localtime()),
@@ -26,16 +29,10 @@ def log(message, tag='GENERAL', verbose=False):
 def error(message, verbose=True):
     """Error log wrapper for log."""
     
-    if verbose is None:
-        verbose = global_settings.VERBOSE
-    
     return log(message, tag='ERROR', verbose=verbose)
 
 
-def debug(message, verbose=False):
+def debug(message, verbose=None):
     """Debug log wrapper for log."""
-    
-    if verbose is None:
-        verbose = global_settings.VERBOSE
     
     log(message, tag='DEBUG', verbose=verbose)
